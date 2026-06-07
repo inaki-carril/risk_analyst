@@ -674,6 +674,65 @@
   .reveal-delay-4 { transition-delay: 0.4s; }
   .reveal-delay-5 { transition-delay: 0.5s; }
 
+  /* ── HAMBURGER ── */
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 36px;
+    height: 36px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    z-index: 200;
+  }
+  .nav-toggle span {
+    display: block;
+    width: 22px;
+    height: 1.5px;
+    background: var(--text);
+    border-radius: 2px;
+    transition: transform 0.3s, opacity 0.3s;
+    transform-origin: center;
+  }
+  .nav-toggle.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav-toggle.open span:nth-child(2) { opacity: 0; }
+  .nav-toggle.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  /* ── MOBILE MENU ── */
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    inset: 0;
+    top: 60px;
+    background: rgba(247,245,240,0.97);
+    backdrop-filter: blur(16px);
+    z-index: 150;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s;
+  }
+  .mobile-menu.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+  .mobile-menu a {
+    font-family: var(--mono);
+    font-size: 15px;
+    letter-spacing: 0.14em;
+    color: var(--text2);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .mobile-menu a:hover { color: var(--gold); }
+
   /* ── SKIP LINK ── */
   .skip-link {
     position: absolute;
@@ -697,6 +756,8 @@
   }
   @media (max-width: 640px) {
     .nav-links { display: none; }
+    .nav-toggle { display: flex; }
+    .mobile-menu { display: flex; }
     .edu-item { grid-template-columns: 1fr; }
     .edu-years { text-align: left; }
   }
@@ -715,7 +776,18 @@
     <li><a href="#skills">STACK</a></li>
     <li><a href="#contact">CONTACT</a></li>
   </ul>
+  <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about"   class="mobile-link">Profile</a>
+  <a href="#exp"     class="mobile-link">Experience</a>
+  <a href="#projects" class="mobile-link">Projects</a>
+  <a href="#skills"  class="mobile-link">Stack</a>
+  <a href="#contact" class="mobile-link">Contact</a>
+</div>
 
 <main id="main">
 
@@ -726,7 +798,7 @@
     <div class="hero-title">Senior Risk Consultant · FRM Level I</div>
     <p class="hero-desc">
       Quantitative Risk Analyst with 4 years of experience in market risk, derivatives valuation,
-      and trading analytics within investment banking environments. Specialised in PnL analysis,
+      and trading analytics within investment banking environments. Specialized in P&amp;L analysis,
       VaR/ES, sensitivities, and counterparty risk.
     </p>
     <div class="hero-badges">
@@ -759,18 +831,17 @@
         <div class="section-label">01 · Profile</div>
         <h2>Market risk &amp;<br><em>derivatives</em><br>analytics</h2>
         <p>
-          Specialised in market risk, derivatives valuation, and trading analytics
-          within investment banking environments. Strong focus on model validation,
+          Specialized in market risk, derivatives valuation, and trading analytics
+          within investment banking environments. Strong focus on metrics validation,
           P&amp;L attribution, and risk methodology.
         </p>
         <p>
-          My work centres on ensuring the robustness of risk frameworks —
+          My work centers on ensuring the robustness of risk frameworks —
           from VaR and ES calculations to counterparty risk metrics (CVA/DVA/PFE)
           and scalable Python automation pipelines.
         </p>
         <p>
           Currently working at Accenture on the Murex FRTB circuit for a Tier 1 Bank.
-          FRM Level II Candidate.
         </p>
       </div>
       <div class="highlights-grid">
@@ -810,7 +881,7 @@
         <div class="exp-role">Senior Consultant · Quant Risk</div>
         <div class="exp-company">Accenture (contractor)</div>
 
-        <div class="exp-project">Murex FRTB Circuit · Tier 1 Bank</div>
+        <div class="exp-project">Murex FRTB Circuit · BBVA CIB</div>
         <ul class="exp-bullets">
           <li>Validation and analysis of market risk metrics and valuation impacts of new derivatives products under the FRTB SA framework.</li>
           <li>Automated risk validation and reporting processes in Python + Streamlit, improving efficiency of market risk analysis workflows.</li>
@@ -832,8 +903,8 @@
         <div class="exp-project">Market Risk / Methodology · Santander CIB</div>
         <ul class="exp-bullets">
           <li>Developed and implemented a Python-based solution to detect and correct arbitrage violations in FX volatility surfaces, enhancing pricing stability and data consistency.</li>
-          <li>Performed market risk analysis on derivatives portfolios through historical simulations, VaR &amp; ES calculations and sensitivity/greeks analysis.</li>
-          <li>Analysed P&amp;L and market risk sensitivities under stress scenarios to assess the impact of volatility movements on trading positions.</li>
+          <li>Performed market risk analysis on derivatives portfolios using historical simulations, VaR &amp; ES calculations, and sensitivity and Greeks analysis.</li>
+          <li>Analyzed P&amp;L and market risk sensitivities under stress scenarios to assess the impact of volatility movements on trading positions.</li>
           <li>Collaborated with IT and Risk teams to implement pricing and risk methodologies within the bank's risk management infrastructure.</li>
           <li>Used Murex FO and Risk tools for derivatives valuation and Black-Scholes modelling in Python to validate results.</li>
         </ul>
@@ -845,8 +916,8 @@
         <div class="exp-project">Counterparty Credit Risk · Santander CIB</div>
         <ul class="exp-bullets">
           <li>Led the Python automation of validation and monitoring processes for advanced counterparty risk metrics (CVA, DVA, PFE, MtM).</li>
-          <li>Interacted regularly with FO and risk stakeholders to explain valuation changes, reconcile P&amp;L drivers, and support risk control.</li>
-          <li>Built interactive dashboards with Power BI to monitor counterparty risk metrics, complemented with a fully automated SQL pipeline for data enrichment.</li>
+          <li>Worked closely with Front Office and risk stakeholders to explain valuation changes, reconcile P&amp;L drivers, and support risk control.</li>
+          <li>Built interactive dashboards with Power BI to monitor counterparty risk metrics, complemented by a fully automated SQL pipeline for data enrichment.</li>
           <li>Performed monthly counterparty risk reviews, trade perimeter checks, regulatory stress testing and Wrong-Way Risk analysis.</li>
         </ul>
         <div class="tag-row">
@@ -899,7 +970,7 @@
       <div class="project-card reveal reveal-delay-3">
         <div class="project-num">Project 03</div>
         <h3>FRTB SA Risk Validation Framework</h3>
-        <p>Risk metrics validation and valuation impact analysis for new derivatives under the FRTB Standardised Approach, with automated Streamlit reporting.</p>
+        <p>Risk metrics validation and valuation impact analysis for new derivatives under the FRTB Standardized Approach, with automated Streamlit reporting.</p>
         <div class="tag-row"><span class="tag">FRTB</span><span class="tag">Murex</span><span class="tag">Streamlit</span></div>
       </div>
 
@@ -992,7 +1063,7 @@
         <div>
           <div class="edu-degree">Master's in Data Science &amp; Big Data</div>
           <div class="edu-school">AFI Escuela de Finanzas</div>
-          <div class="edu-detail">Financial data analytics · Machine learning · Risk modelling</div>
+          <div class="edu-detail">Financial data analytics · Machine learning · Risk modeling</div>
         </div>
         <div class="edu-years">2021 — 2022</div>
       </div>
@@ -1025,7 +1096,7 @@
   <section id="contact">
     <div class="section-label reveal" style="justify-content: center;">07 · Contact</div>
     <h2 class="reveal reveal-delay-1">Let's talk risk &amp;<br><em>capital markets</em></h2>
-    <p class="reveal reveal-delay-2">Open to new opportunities in risk analytics and monitoring, process automation and streamline risk infrastructure.</p>
+    <p class="reveal reveal-delay-2">Open to new opportunities in risk analytics and monitoring, process automation, and streamlining risk infrastructure.</p>
     <div class="contact-links reveal reveal-delay-3">
       <a class="contact-item" href="mailto:inakicarril1@gmail.com" target="_blank" rel="noopener">
         <span>✉</span> inakicarril1@gmail.com
@@ -1039,10 +1110,26 @@
 </main>
 
 <footer>
-  © 2026 Iñaki Carril · Designed &amp; built with focus on the detail
+  © 2026 Iñaki Carril · Designed &amp; built with an eye for detail
 </footer>
 
 <script>
+  // Hamburger menu
+  const toggle = document.querySelector('.nav-toggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+  toggle.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    toggle.classList.toggle('open', isOpen);
+    toggle.setAttribute('aria-expanded', isOpen);
+  });
+  document.querySelectorAll('.mobile-link').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      toggle.classList.remove('open');
+      toggle.setAttribute('aria-expanded', false);
+    });
+  });
+
   const revealEls = document.querySelectorAll('.reveal, .reveal-left');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
