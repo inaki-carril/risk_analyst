@@ -510,6 +510,83 @@
     letter-spacing: 0.03em;
   }
 
+  /* ── PERSONAL PROJECTS ── */
+  #personal-projects { }
+  .personal-projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+  .personal-project-card {
+    background: var(--navy2);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--gold);
+    padding: 1.75rem;
+    position: relative;
+    transition: border-color 0.2s, transform 0.2s;
+    display: flex;
+    flex-direction: column;
+  }
+  .personal-project-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-2px);
+  }
+  .personal-project-card:hover { border-top-color: var(--gold); }
+  .pp-status {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .pp-status::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--teal);
+  }
+  .personal-project-card h3 {
+    font-family: var(--display);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+    line-height: 1.25;
+  }
+  .personal-project-card .pp-desc {
+    font-size: 13px;
+    color: var(--text2);
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
+    flex: 1;
+  }
+  .pp-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: var(--gold);
+    text-decoration: none;
+    border: 1px solid var(--gold);
+    padding: 7px 14px;
+    border-radius: 2px;
+    transition: background 0.2s, color 0.2s;
+    align-self: flex-start;
+    margin-top: auto;
+  }
+  .pp-link:hover {
+    background: var(--gold);
+    color: #f7f5f0;
+  }
+
   /* ── CERTS ── */
   #certs {
     background: #f4f2ed;
@@ -832,7 +909,7 @@
         <h2>Market risk &amp;<br><em>derivatives</em><br>analytics</h2>
         <p>
           Specialized in market risk, derivatives valuation, and trading analytics
-          within investment banking environments. Strong focus on metrics validation,
+          within investment banking environments. Strong focus on model validation,
           P&amp;L attribution, and risk methodology.
         </p>
         <p>
@@ -842,6 +919,7 @@
         </p>
         <p>
           Currently working at Accenture on the Murex FRTB circuit for a Tier 1 Bank.
+          FRM Level II Candidate.
         </p>
       </div>
       <div class="highlights-grid">
@@ -878,10 +956,10 @@
 
       <div class="exp-item reveal reveal-delay-2">
         <div class="exp-period">Jan 2026 — Present &nbsp;<span class="current">● Active</span></div>
-        <div class="exp-role">Senior Consultant · Quant Risk</div>
+        <div class="exp-role">Senior Market Risk Analyst</div>
         <div class="exp-company">Accenture (contractor)</div>
 
-        <div class="exp-project">Murex FRTB Circuit · BBVA CIB</div>
+        <div class="exp-project">Murex FRTB Circuit · Tier 1 Bank</div>
         <ul class="exp-bullets">
           <li>Validation and analysis of market risk metrics and valuation impacts of new derivatives products under the FRTB SA framework.</li>
           <li>Automated risk validation and reporting processes in Python + Streamlit, improving efficiency of market risk analysis workflows.</li>
@@ -897,7 +975,7 @@
 
       <div class="exp-item reveal reveal-delay-3">
         <div class="exp-period">Jan 2022 — Dec 2025</div>
-        <div class="exp-role">Risk Analyst</div>
+        <div class="exp-role">Senior Market & Cpty Risk Analyst</div>
         <div class="exp-company">NFQ Advisory Services · Madrid</div>
 
         <div class="exp-project">Market Risk / Methodology · Santander CIB</div>
@@ -950,7 +1028,7 @@
   <!-- ── PROJECTS ── -->
   <section id="projects">
     <div class="section-label reveal">03 · Projects</div>
-    <h2 class="section-title reveal reveal-delay-1">Featured work</h2>
+    <h2 class="section-title reveal reveal-delay-1">Featured work &amp; side projects</h2>
     <div class="projects-grid">
 
       <div class="project-card reveal reveal-delay-1">
@@ -979,6 +1057,17 @@
         <h3>Python Bond Pricer</h3>
         <p>Jupyter Notebook pricer for fixed and floating coupon bonds, supporting full yield-curve bootstrapping and duration/convexity analysis.</p>
         <div class="tag-row"><span class="tag">Python</span><span class="tag">Fixed Income</span><span class="tag">Pricing</span></div>
+      </div>
+
+      <div class="project-card reveal reveal-delay-5">
+        <div class="project-num">Side Project 01</div>
+        <h3>Portfolio Risk Analytics Dashboard</h3>
+        <p>Interactive dashboard with two modules: a <strong>VaR Engine</strong> (Historical Simulation, Parametric, Monte Carlo) and a <strong>Portfolio Performance Analytics</strong> covering risk adjusted metrics.</p>
+        <div class="tag-row">
+          <span class="tag">Python</span><span class="tag">Streamlit</span>
+          <span class="tag">Risk Metrics</span><span class="tag">Plotly</span>
+        </div>
+        <a class="pp-link" href="https://inaki-carril-portfolio-risk-analytics.streamlit.app/" target="_blank" rel="noopener" style="margin-top: 1rem;">Launch app ↗</a>
       </div>
 
     </div>
